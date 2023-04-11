@@ -14,6 +14,7 @@
 		A86938D120D027C400E87976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86938CF20D027C400E87976 /* LaunchScreen.storyboard */; };
 		FDDCBBF629E5976400D5457A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCBBF529E5976400D5457A /* MainViewController.swift */; };
 		FDDCBBF829E5977600D5457A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCBBF729E5977600D5457A /* Color.swift */; };
+		FDDCBC0C29E5B15400D5457A /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCBC0B29E5B15400D5457A /* Extension + UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A86938D220D027C400E87976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDDCBBF529E5976400D5457A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FDDCBBF729E5977600D5457A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		FDDCBC0B29E5B15400D5457A /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +60,49 @@
 		A86938C520D027C300E87976 /* HW 2 */ = {
 			isa = PBXGroup;
 			children = (
+				FDDCBC0D29E5B25100D5457A /* View Controllers */,
+				FDCA6F5129E5B30C0052223E /* Models */,
+				FDCA6F5229E5B3150052223E /* Storyboards */,
+				FDCA6F5029E5B3010052223E /* Extensions */,
 				A86938C620D027C300E87976 /* AppDelegate.swift */,
-				FDDCBBF529E5976400D5457A /* MainViewController.swift */,
-				A86938C820D027C300E87976 /* ColorizedViewController.swift */,
-				FDDCBBF729E5977600D5457A /* Color.swift */,
-				A86938CA20D027C300E87976 /* Main.storyboard */,
 				A86938CD20D027C400E87976 /* Assets.xcassets */,
-				A86938CF20D027C400E87976 /* LaunchScreen.storyboard */,
 				A86938D220D027C400E87976 /* Info.plist */,
 			);
 			path = "HW 2";
+			sourceTree = "<group>";
+		};
+		FDCA6F5029E5B3010052223E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FDDCBC0B29E5B15400D5457A /* Extension + UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FDCA6F5129E5B30C0052223E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FDDCBBF729E5977600D5457A /* Color.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FDCA6F5229E5B3150052223E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A86938CA20D027C300E87976 /* Main.storyboard */,
+				A86938CF20D027C400E87976 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FDDCBC0D29E5B25100D5457A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FDDCBBF529E5976400D5457A /* MainViewController.swift */,
+				A86938C820D027C300E87976 /* ColorizedViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDDCBBF629E5976400D5457A /* MainViewController.swift in Sources */,
+				FDDCBC0C29E5B15400D5457A /* Extension + UIView.swift in Sources */,
 				FDDCBBF829E5977600D5457A /* Color.swift in Sources */,
 				A86938C920D027C300E87976 /* ColorizedViewController.swift in Sources */,
 				A86938C720D027C300E87976 /* AppDelegate.swift in Sources */,

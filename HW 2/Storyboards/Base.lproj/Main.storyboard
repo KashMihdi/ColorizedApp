@@ -129,9 +129,9 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYA-Ln-OEw">
-                                <rect key="frame" x="154.66666666666666" y="787.33333333333337" width="120.99999999999997" height="54.666666666666629"/>
+                                <rect key="frame" x="164" y="787.33333333333337" width="102" height="54.666666666666629"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button" cornerStyle="large">
+                                <buttonConfiguration key="configuration" style="filled" title="Done" cornerStyle="large">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
                                 </buttonConfiguration>
                                 <connections>

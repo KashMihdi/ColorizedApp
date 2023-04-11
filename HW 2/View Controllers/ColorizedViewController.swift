@@ -9,7 +9,7 @@
 import UIKit
 
 final class ColorizedViewController: UIViewController {
-    
+    // MARK: - IB Outlets
     @IBOutlet var colorView: UIView!
 
     @IBOutlet var redLabel: UILabel!
@@ -20,14 +20,17 @@ final class ColorizedViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
+    // MARK: - Public Properties
     var color: Color!
     unowned var delegate: ColorizedViewControllerDelegate!
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
     }
     
+    // MARK: - IB Actions
     @IBAction func sliderAction(_ sender: UISlider) {
         switch sender {
         case redSlider:
@@ -49,12 +52,12 @@ final class ColorizedViewController: UIViewController {
         
     }
     
-    
     @IBAction func doneButtonPressed() {
         delegate.setValue(for: color)
         dismiss(animated: true)
     }
     
+    // MARK: - Private Methods
     private func updateUI() {
         colorView.layer.cornerRadius = 15
         
