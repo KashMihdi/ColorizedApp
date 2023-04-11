@@ -25,24 +25,10 @@ final class ColorizedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        colorView.layer.cornerRadius = 15
-        colorView.setColor(red: color.redColor, green: color.greenColor, blue: color.blueColor)
-        
-        redSlider.value = color.redColor
-        greenSlider.value = color.greenColor
-        blueSlider.value = color.blueColor
-        
-        redLabel.text = string(from: redSlider)
-        greenLabel.text = string(from: greenSlider)
-        blueLabel.text = string(from: blueSlider)
+        updateUI()
     }
     
     @IBAction func sliderAction(_ sender: UISlider) {
-        colorView.setColor(
-            red: redSlider.value,
-            green: greenSlider.value,
-            blue: blueSlider.value
-        )
         switch sender {
         case redSlider:
             redLabel.text = string(from: redSlider)
@@ -55,6 +41,12 @@ final class ColorizedViewController: UIViewController {
             color.blueColor = blueSlider.value
         }
         
+        colorView.setColor(
+            red: redSlider.value,
+            green: greenSlider.value,
+            blue: blueSlider.value
+        )
+        
     }
     
     
@@ -63,7 +55,24 @@ final class ColorizedViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    private func
+    private func updateUI() {
+        colorView.layer.cornerRadius = 15
+        
+        colorView.setColor(
+            red: color.redColor,
+            green: color.greenColor,
+            blue: color.blueColor
+        )
+        
+        redSlider.value = color.redColor
+        greenSlider.value = color.greenColor
+        blueSlider.value = color.blueColor
+        
+        redLabel.text = string(from: redSlider)
+        greenLabel.text = string(from: greenSlider)
+        blueLabel.text = string(from: blueSlider)
+    
+    }
     
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
