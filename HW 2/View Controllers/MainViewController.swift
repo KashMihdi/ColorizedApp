@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 // MARK: - ColorizedViewControllerDelegate
 protocol ColorizedViewControllerDelegate: AnyObject {
     func setValue(for color: Color)
