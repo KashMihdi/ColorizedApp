@@ -85,7 +85,7 @@ final class ColorizedViewController: UIViewController {
 extension ColorizedViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
-        guard redSlider.maximumValue > Float(text) ?? 0 else {
+        guard let digit = Float(text),redSlider.maximumValue > digit else {
             showAlert(
                 title: "Wrong number",
                 message: "Enter a number between 0 and 1",
@@ -93,13 +93,14 @@ extension ColorizedViewController: UITextFieldDelegate {
             )
             return
         }
+        
         switch textField {
         case redTextField:
-            color.redColor = Float(text) ?? 0
+            color.redColor = digit
         case greenTextField:
-            color.greenColor = Float(text) ?? 0
+            color.greenColor = digit
         default:
-            color.blueColor = Float(text) ?? 0
+            color.blueColor = digit
         }
         updateUI()
     }
