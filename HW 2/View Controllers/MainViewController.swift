@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     private var color = Color(
         redColor: 0.26,
         greenColor: 0.67,
-        blueColor: 1.00
+        blueColor: 0.50
     ) {
         didSet {
             view.setColor(
