@@ -36,6 +36,9 @@ final class ColorizedViewController: UIViewController {
         redTextField.delegate = self
         greenTextField.delegate = self
         blueTextField.delegate = self
+        redTextField.addDoneButton()
+        greenTextField.addDoneButton()
+        blueTextField.addDoneButton()
     }
     
     // MARK: - IB Actions
@@ -43,21 +46,12 @@ final class ColorizedViewController: UIViewController {
         switch sender {
         case redSlider:
             color.redColor = redSlider.value
-            updateUI()
         case greenSlider:
             color.greenColor = greenSlider.value
-            updateUI()
         default:
             color.blueColor = blueSlider.value
-            updateUI()
         }
-        
-        colorView.setColor(
-            red: redSlider.value,
-            green: greenSlider.value,
-            blue: blueSlider.value
-        )
-        
+        updateUI()
     }
     
     @IBAction func doneButtonPressed() {
@@ -67,21 +61,18 @@ final class ColorizedViewController: UIViewController {
     
     // MARK: - Private Methods
     private func updateUI() {
-        print(color.redColor)
-        print(color.greenColor)
-        print(color.blueColor)
 
         redSlider.value = color.redColor
         greenSlider.value = color.greenColor
         blueSlider.value = color.blueColor
         
-        redLabel.text = string(from: redSlider)
-        greenLabel.text = string(from: greenSlider)
-        blueLabel.text = string(from: blueSlider)
+        redLabel.text = redSlider.value.string()
+        greenLabel.text = greenSlider.value.string()
+        blueLabel.text = blueSlider.value.string()
         
-        redTextField.text = String(format: "%.2f", color.redColor)
-        greenTextField.text = String(format: "%.2f", color.greenColor)
-        blueTextField.text = String(format: "%.2f", color.blueColor)
+        redTextField.text = color.redColor.string()
+        greenTextField.text = color.greenColor.string()
+        blueTextField.text = color.blueColor.string()
         
         colorView.setColor(
             red: color.redColor,
@@ -89,15 +80,19 @@ final class ColorizedViewController: UIViewController {
             blue: color.blueColor
         )
     }
-    
-    private func string(from slider: UISlider) -> String {
-        String(format: "%.2f", slider.value)
-    }
 }
 
 extension ColorizedViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
+        guard redSlider.maximumValue > Float(text) ?? 0 else {
+            showAlert(
+                title: "Wrong number",
+                message: "Enter a number between 0 and 1",
+                textField: textField
+            )
+            return
+        }
         switch textField {
         case redTextField:
             color.redColor = Float(text) ?? 0
@@ -107,5 +102,38 @@ extension ColorizedViewController: UITextFieldDelegate {
             color.blueColor = Float(text) ?? 0
         }
         updateUI()
+    }
+}
+
+extension ColorizedViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+}
+
+private extension UITextField {
+    func addDoneButton() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        toolbar.items = [flexibleSpace, doneButton]
+        inputAccessoryView = toolbar
+    }
+
+    @objc func doneButtonTapped() {
+        resignFirstResponder()
+    }
+}
+
+extension ColorizedViewController {
+    private func showAlert(title: String, message: String, textField: UITextField?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default){ _ in
+            textField?.text = ""
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }

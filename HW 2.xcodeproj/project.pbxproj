@@ -15,6 +15,7 @@
 		FDDCBBF629E5976400D5457A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCBBF529E5976400D5457A /* MainViewController.swift */; };
 		FDDCBBF829E5977600D5457A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCBBF729E5977600D5457A /* Color.swift */; };
 		FDDCBC0C29E5B15400D5457A /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCBC0B29E5B15400D5457A /* Extension + UIView.swift */; };
+		FDDCE3AE29E6D6D800F4E729 /* Extension + Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCE3AD29E6D6D800F4E729 /* Extension + Float.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FDDCBBF529E5976400D5457A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FDDCBBF729E5977600D5457A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FDDCBC0B29E5B15400D5457A /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
+		FDDCE3AD29E6D6D800F4E729 /* Extension + Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Float.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				FDDCBBF529E5976400D5457A /* MainViewController.swift */,
 				A86938C820D027C300E87976 /* ColorizedViewController.swift */,
+				FDDCE3AD29E6D6D800F4E729 /* Extension + Float.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				FDDCBC0C29E5B15400D5457A /* Extension + UIView.swift in Sources */,
 				FDDCBBF829E5977600D5457A /* Color.swift in Sources */,
 				A86938C920D027C300E87976 /* ColorizedViewController.swift in Sources */,
+				FDDCE3AE29E6D6D800F4E729 /* Extension + Float.swift in Sources */,
 				A86938C720D027C300E87976 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
