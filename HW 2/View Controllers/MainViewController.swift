@@ -17,9 +17,9 @@ class MainViewController: UIViewController {
     
     // MARK: - Private Properties
     private var color = Color(
-        redColor: 0.26,
-        greenColor: 0.67,
-        blueColor: 0.50
+        redColor: 0.30,
+        greenColor: 0.60,
+        blueColor: 0.90
     ) {
         didSet {
             view.setColor(

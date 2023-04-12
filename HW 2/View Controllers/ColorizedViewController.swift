@@ -81,7 +81,7 @@ final class ColorizedViewController: UIViewController {
         )
     }
 }
-
+// MARK: - UITextFieldDelegate
 extension ColorizedViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
@@ -104,14 +104,14 @@ extension ColorizedViewController: UITextFieldDelegate {
         updateUI()
     }
 }
-
+// MARK: - Keyboard Call
 extension ColorizedViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
 }
-
+// MARK: - Add Done Button for Keyboard
 private extension UITextField {
     func addDoneButton() {
         let toolbar = UIToolbar()
@@ -126,7 +126,7 @@ private extension UITextField {
         resignFirstResponder()
     }
 }
-
+// MARK: - UIAlertController
 extension ColorizedViewController {
     private func showAlert(title: String, message: String, textField: UITextField?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

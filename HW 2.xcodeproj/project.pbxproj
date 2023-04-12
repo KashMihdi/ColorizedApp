@@ -76,6 +76,7 @@
 		FDCA6F5029E5B3010052223E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FDDCE3AD29E6D6D800F4E729 /* Extension + Float.swift */,
 				FDDCBC0B29E5B15400D5457A /* Extension + UIView.swift */,
 			);
 			path = Extensions;
@@ -103,7 +104,6 @@
 			children = (
 				FDDCBBF529E5976400D5457A /* MainViewController.swift */,
 				A86938C820D027C300E87976 /* ColorizedViewController.swift */,
-				FDDCE3AD29E6D6D800F4E729 /* Extension + Float.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
