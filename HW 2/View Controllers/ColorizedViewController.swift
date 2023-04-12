@@ -42,15 +42,12 @@ final class ColorizedViewController: UIViewController {
     @IBAction func sliderAction(_ sender: UISlider) {
         switch sender {
         case redSlider:
-//            redLabel.text = string(from: redSlider)
             color.redColor = redSlider.value
             updateUI()
         case greenSlider:
-//            greenLabel.text = string(from: greenSlider)
             color.greenColor = greenSlider.value
             updateUI()
         default:
-//            blueLabel.text = string(from: blueSlider)
             color.blueColor = blueSlider.value
             updateUI()
         }
@@ -70,6 +67,9 @@ final class ColorizedViewController: UIViewController {
     
     // MARK: - Private Methods
     private func updateUI() {
+        print(color.redColor)
+        print(color.greenColor)
+        print(color.blueColor)
 
         redSlider.value = color.redColor
         greenSlider.value = color.greenColor
@@ -81,8 +81,7 @@ final class ColorizedViewController: UIViewController {
         
         redTextField.text = String(format: "%.2f", color.redColor)
         greenTextField.text = String(format: "%.2f", color.greenColor)
-        blueLabel.text = String(format: "%.2f", color.blueColor)
-        print(blueLabel.text)
+        blueTextField.text = String(format: "%.2f", color.blueColor)
         
         colorView.setColor(
             red: color.redColor,
@@ -103,9 +102,9 @@ extension ColorizedViewController: UITextFieldDelegate {
         case redTextField:
             color.redColor = Float(text) ?? 0
         case greenTextField:
-            greenSlider.value = Float(text) ?? 0
+            color.greenColor = Float(text) ?? 0
         default:
-            blueSlider.value = Float(text) ?? 0
+            color.blueColor = Float(text) ?? 0
         }
         updateUI()
     }
