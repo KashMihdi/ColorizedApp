@@ -12,80 +12,65 @@ final class ColorizedViewController: UIViewController {
     // MARK: - IB Outlets
     @IBOutlet var colorView: UIView!
 
-    @IBOutlet var redLabel: UILabel!
-    @IBOutlet var greenLabel: UILabel!
-    @IBOutlet var blueLabel: UILabel!
+
+    @IBOutlet var colorLabels: [UILabel]!
+    @IBOutlet var colorSliders: [UISlider]!
+    @IBOutlet var colorTextFields: [UITextField]!
     
-    @IBOutlet var redSlider: UISlider!
-    @IBOutlet var greenSlider: UISlider!
-    @IBOutlet var blueSlider: UISlider!
-    
-    @IBOutlet weak var redTextField: UITextField!
-    @IBOutlet weak var greenTextField: UITextField!
-    @IBOutlet weak var blueTextField: UITextField!
     
     // MARK: - Public Properties
     var color: Color!
+    var setColors: [Float] = []
     unowned var delegate: ColorizedViewControllerDelegate!
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         colorView.layer.cornerRadius = 15
+        setColors = [color.redColor, color.greenColor, color.blueColor]
         updateUI()
-        redTextField.delegate = self
-        greenTextField.delegate = self
-        blueTextField.delegate = self
-        redTextField.addDoneButton()
-        greenTextField.addDoneButton()
-        blueTextField.addDoneButton()
+        colorTextFields.forEach{
+            $0.delegate = self
+            $0.addDoneButton()
+        }
     }
     
     // MARK: - IB Actions
     @IBAction func sliderAction(_ sender: UISlider) {
-        switch sender {
-        case redSlider:
-            color.redColor = redSlider.value
-        case greenSlider:
-            color.greenColor = greenSlider.value
-        default:
-            color.blueColor = blueSlider.value
-        }
-        updateUI()
+        setColors[sender.tag] = sender.value
+        colorLabels[sender.tag].text = sender.value.string()
+        colorTextFields[sender.tag].text = sender.value.string()
+        setBackgroundView()
     }
     
     @IBAction func doneButtonPressed() {
-        delegate.setValue(for: color)
+        delegate.setValue(for: color.getColor(for: setColors))
         dismiss(animated: true)
     }
     
     // MARK: - Private Methods
-    private func updateUI() {
-
-        redSlider.value = color.redColor
-        greenSlider.value = color.greenColor
-        blueSlider.value = color.blueColor
-        
-        redLabel.text = redSlider.value.string()
-        greenLabel.text = greenSlider.value.string()
-        blueLabel.text = blueSlider.value.string()
-        
-        redTextField.text = color.redColor.string()
-        greenTextField.text = color.greenColor.string()
-        blueTextField.text = color.blueColor.string()
-        
+    private func setBackgroundView() {
         colorView.setColor(
-            red: color.redColor,
-            green: color.greenColor,
-            blue: color.blueColor
+            red: setColors[0],
+            green: setColors[1],
+            blue: setColors[2]
         )
+    }
+    
+    private func updateUI() {
+        for (index, _) in setColors.enumerated() {
+            colorLabels[index].text = setColors[index].string()
+            colorSliders[index].value = setColors[index]
+            colorTextFields[index].text = setColors[index].string()
+        }
+        setBackgroundView()
     }
 }
 // MARK: - UITextFieldDelegate
 extension ColorizedViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
-        guard let digit = Float(text),redSlider.maximumValue > digit else {
+        guard let digit = Float(text),colorSliders[0].maximumValue > digit else {
             showAlert(
                 title: "Wrong number",
                 message: "Enter a number between 0 and 1",
@@ -94,15 +79,10 @@ extension ColorizedViewController: UITextFieldDelegate {
             return
         }
         
-        switch textField {
-        case redTextField:
-            color.redColor = digit
-        case greenTextField:
-            color.greenColor = digit
-        default:
-            color.blueColor = digit
-        }
-        updateUI()
+        setColors[textField.tag] = digit
+        colorLabels[textField.tag].text = text
+        colorSliders[textField.tag].value = digit
+        setBackgroundView()
     }
 }
 // MARK: - Keyboard Call
@@ -117,12 +97,19 @@ private extension UITextField {
     func addDoneButton() {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        let flexibleSpace = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(doneButtonTapped)
+        )
         toolbar.items = [flexibleSpace, doneButton]
         inputAccessoryView = toolbar
     }
-
     @objc func doneButtonTapped() {
         resignFirstResponder()
     }

@@ -12,4 +12,8 @@ struct Color {
     var redColor: Float
     var greenColor: Float
     var blueColor: Float
+    
+    func getColor(for set: [Float]) -> Color {
+        Color(redColor: set[0], greenColor: set[1], blueColor: set[2])
+    }
 }
